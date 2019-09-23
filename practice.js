@@ -27,7 +27,11 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first(ary1, func1) {
+  func1(ary1[0])
+}
+
+// first()
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -38,8 +42,6 @@ first(names, function(firstName){
 });
 // Do not edit the code above.
 
-
-
 ////////// PROBLEM 2 //////////
 
 /*
@@ -47,7 +49,10 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+function last(array, cb) {
+  cb(array[array.length-1])
+}
+
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,6 +71,11 @@ last(names, function(lastName){
 */
 
 //Code Here
+function multiply(num1,num2,cb) {
+let prod = (num1 * num2);
+cb(prod)
+
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -85,6 +95,14 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+
+function contains(arr1, names, callb) {
+if (arr1.indexOf(names) === 0) {
+  callb(true)
+} else {
+  callb(false)
+}
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -107,6 +125,16 @@ contains(names, 'Colt', function(result){
 
 //Code Here
 
+function uniq(arr, callback) {
+  let result = [];
+  for (let i=0; i<arr.length; i++) {
+    if (result.indexOf(arr[i]) === -1) {
+      result.push(arr[i])
+    }
+  }
+  callback(result);
+}
+
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -124,10 +152,18 @@ uniq(names, function(uniqArr){
 
 //Code Here 
 
-// Do not edit the code below.
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
-});
+function each(arr,cb){
+  for(i=0;i<arr.length;i++){
+  cb(arr[i],i)
+  }
+  }
+
+
+
+ each(names, function(item, indice){
+   console.log('The item in the ' + indice + ' position is ' + item)
+ });
+
 // Do not edit the code above.
 
 
@@ -167,3 +203,11 @@ getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
 // Do not edit the code above.
+
+function getUserById(users,id,cb){
+  for(let i=0; i<users.length;i++){
+  if( users[i].id == id ){
+  cb(users[i])
+  }
+  }
+  }
